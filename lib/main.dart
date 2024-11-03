@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 100),
               child: Container(
-
+                margin: EdgeInsets.all(11),
                 width: 200,
                 height: 200,
                 decoration: BoxDecoration(
