@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:healfast01/DoctorsRegisterationPage.dart';
+import 'package:healfast01/UserRegisteration.dart';
+
+import 'package:healfast01/BottomNav/BottomNavigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
             Padding(
-              padding: const EdgeInsets.only(bottom: 100),
+              padding: const EdgeInsets.only(bottom: 80),
               child: Container(
                 margin: EdgeInsets.all(11),
                 width: 200,
@@ -69,13 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color:Colors.red,),
                   ),
                 ),
-              ),),
+              ),
+            ),
 
             SizedBox(
               width: 225,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: ElevatedButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserRegisteration()));
                 },style: ElevatedButton.styleFrom(
                     elevation: 10,
                     shadowColor: Colors.black
@@ -86,14 +92,28 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               width: 225,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 100),
+                padding: const EdgeInsets.only(bottom: 20),
                 child: ElevatedButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorsRegisterationPage()));
                 },style: ElevatedButton.styleFrom(
                     elevation: 10,
                     shadowColor: Colors.black
                 ), child: const Text('Register As Doctor', style: TextStyle(fontSize: 18),),),
               ),
-            )
+            ),
+
+            InkWell(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=> BottomNavigation()));
+              },
+              child: Text("All Ready A User",
+                selectionColor: Colors.blue,
+                style: TextStyle(
+                    fontSize: 20,
+                    decoration: TextDecoration.underline),
+              ),
+            ),
           ],
         ),
       ),
