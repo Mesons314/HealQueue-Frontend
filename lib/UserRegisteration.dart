@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healfast01/BottomNav/BottomNavigation.dart';
+import 'package:healfast01/ScreenPages/HomePage.dart';
 
 class UserRegisteration extends StatefulWidget{
   @override
@@ -103,6 +105,8 @@ class userRegisteration extends State<UserRegisteration>{
           Padding(padding: const EdgeInsets.only(left: 10,right: 10),
             child: Container(
               child: TextField(
+                minLines: 1,
+                maxLines: null,
                 decoration: InputDecoration(
                   hintText: 'Address',
                     border: OutlineInputBorder(
@@ -148,7 +152,7 @@ class userRegisteration extends State<UserRegisteration>{
                   alignment: Alignment.center, // Center the content
                 ),
                 onPressed: () {
-                  // Button action here
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavigation()));
                 },
                 child: Text(
                   'Submit',

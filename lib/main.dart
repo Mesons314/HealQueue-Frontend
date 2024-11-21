@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healfast01/DoctorsRegisterationPage.dart';
+import 'package:healfast01/Login.dart';
 import 'package:healfast01/UserRegisteration.dart';
 
 import 'package:healfast01/BottomNav/BottomNavigation.dart';
@@ -105,9 +106,9 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               onTap: (){
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context)=> BottomNavigation()));
+                    MaterialPageRoute(builder: (context)=> Login()));
               },
-              child: Text("All Ready A User",
+              child: Text("Allready A User",
                 selectionColor: Colors.blue,
                 style: TextStyle(
                     fontSize: 20,

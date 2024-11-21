@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:healfast01/BottomNav/BottomNavigation.dart';
+import 'package:healfast01/ScreenPages/HomePage.dart';
 
 class DoctorsRegisterationPage extends StatefulWidget{
   const DoctorsRegisterationPage({super.key});
@@ -133,6 +135,8 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             Padding(
                 padding: EdgeInsets.only(left: 10,right: 10),
               child: TextField(
+                minLines: 1,
+                maxLines: null,
                 decoration: InputDecoration(
                   hintText: 'Address',
                   border: OutlineInputBorder(
@@ -233,7 +237,9 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
                 height: 50,
                 width: 120,
                 child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavigation()));
+                    },
                     child: Text('Submit',style: TextStyle(fontSize: 20,),
                     textAlign: TextAlign.center,),
                 style: ElevatedButton.styleFrom(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healfast01/ScreenPages/Clinic.dart';
+import 'package:healfast01/ScreenPages/Profile.dart';
 
 
 class HomePage extends StatefulWidget{
@@ -24,7 +26,7 @@ class homepage extends State<HomePage>{
       ),
       drawer: Drawer(
         child: ListView(
-          children: const [
+          children: [
             SizedBox(
               height: 200,
               child: DrawerHeader(
@@ -39,7 +41,12 @@ class homepage extends State<HomePage>{
                     SizedBox(
                       height: 5,
                     ),
-                    Text('Profile')
+                    InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
+                        },
+                        child: Text('Profile')
+                    )
                   ],
                 ),
               ),
@@ -47,22 +54,28 @@ class homepage extends State<HomePage>{
             Column(
               children: [
                 ListTile(
-                  title: Text('Home'),
-                  leading: Icon(Icons.home),
+                  onTap: (){
+
+                  },
+                  title: const Text('Home'),
+                  leading: const Icon(Icons.home),
                 ),
                 ListTile(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Clinic()));
+                  },
                   title: Text('Clinics'),
                   leading: Icon(Icons.local_hospital),
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('Past Records'),
                   leading: Icon(Icons.emergency_recording_sharp),
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('Help'),
                   leading: Icon(Icons.help),
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('Logout'),
                   leading: Icon(Icons.logout),
                 ),
