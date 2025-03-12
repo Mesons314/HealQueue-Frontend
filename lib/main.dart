@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healfast01/DoctorsRegisterationPage.dart';
 import 'package:healfast01/Login.dart';
+import 'package:healfast01/Splash_Screen.dart';
 import 'package:healfast01/UserRegisteration.dart';
 
 import 'package:healfast01/BottomNav/BottomNavigation.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Heal Fast'),
+      home: SplashScreen(),
     );
   }
 }
@@ -99,7 +100,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 },style: ElevatedButton.styleFrom(
                     elevation: 10,
                     shadowColor: Colors.black
-                ), child: const Text('Register As Doctor', style: TextStyle(fontSize: 18),),),
+                ), child: const Text('Register As Doctor', style: TextStyle(fontSize: 18),
+                ),
+                ),
               ),
             ),
 

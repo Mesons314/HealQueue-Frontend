@@ -30,15 +30,15 @@ class homepage extends State<HomePage>{
             SizedBox(
               height: 200,
               child: DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.blue,
                 ),
                 child: Column(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 65,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     InkWell(
@@ -64,8 +64,8 @@ class homepage extends State<HomePage>{
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Clinic()));
                   },
-                  title: Text('Clinics'),
-                  leading: Icon(Icons.local_hospital),
+                  title: const Text('Clinics'),
+                  leading: const Icon(Icons.local_hospital),
                 ),
                 const ListTile(
                   title: Text('Past Records'),

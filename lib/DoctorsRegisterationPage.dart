@@ -83,13 +83,14 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
                           firstDate: DateTime(1900),
                           lastDate: DateTime(2025));
         
-                      if(picked !=null){
+                      if(picked != null){
                         setState(() {
                           dateController.text = "${picked.day}/${picked.month}/${picked.year}";
                         });
                       }
                     },
                     child: IgnorePointer(
+                      ignoring: true,
                       child: TextField(
                         controller: dateController,
                         decoration: InputDecoration(
@@ -135,8 +136,12 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             Padding(
                 padding: EdgeInsets.only(left: 10,right: 10),
               child: TextField(
+                textInputAction: TextInputAction.newline,
                 minLines: 1,
                 maxLines: null,
+                onTap: (){
+
+                },
                 decoration: InputDecoration(
                   hintText: 'Address',
                   border: OutlineInputBorder(
