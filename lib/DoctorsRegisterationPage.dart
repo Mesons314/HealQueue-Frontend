@@ -39,7 +39,7 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
                   width: 400,
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: 'Name',
+                        hintText: 'First Name',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
@@ -76,22 +76,25 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
                   width: 200,
                   margin: const EdgeInsets.only(left: 21),
                   child: InkWell(
-                    onTap: () async{
-                      DateTime? picked = await showDatePicker(
+
+                    child: TextField(
+                      onTap: () async {
+                        DateTime now = DateTime.now();
+                        DateTime lastDate = DateTime(2025, 12, 31); // Set a proper last date
+
+                        DateTime? picked = await showDatePicker(
                           context: context,
-                          initialDate: DateTime.now(),
+                          initialDate: now.isAfter(lastDate) ? lastDate : now, // Ensure initialDate is valid
                           firstDate: DateTime(1900),
-                          lastDate: DateTime(2025));
-        
-                      if(picked != null){
-                        setState(() {
-                          dateController.text = "${picked.day}/${picked.month}/${picked.year}";
-                        });
-                      }
-                    },
-                    child: IgnorePointer(
-                      ignoring: true,
-                      child: TextField(
+                          lastDate: lastDate,
+                        );
+
+                        if (picked != null) {
+                          setState(() {
+                            dateController.text = "${picked.day}/${picked.month}/${picked.year}";
+                          });
+                        }
+                      },
                         controller: dateController,
                         decoration: InputDecoration(
                           hintText: "DOB",
@@ -104,7 +107,6 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
                         ),
                         readOnly: true,
                       ),
-                    ),
                   ),
                 )
               ],
