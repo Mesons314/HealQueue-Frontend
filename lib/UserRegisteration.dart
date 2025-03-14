@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:healfast01/BottomNav/BottomNavigation.dart';
 import 'package:healfast01/ScreenPages/HomePage.dart';
 
@@ -12,6 +13,8 @@ class UserRegisteration extends StatefulWidget{
 class userRegisteration extends State<UserRegisteration>{
 
   final TextEditingController dateController = TextEditingController();
+
+  bool passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class userRegisteration extends State<UserRegisteration>{
                 width: 400,
                 child: TextField(
                 decoration: InputDecoration(
-                  hintText: 'Name',
+                  hintText: 'UserName',
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.lightBlueAccent
@@ -48,7 +51,6 @@ class userRegisteration extends State<UserRegisteration>{
                 ),
               ),
             ),
-
             Row(
               children: [
                 Padding(
@@ -63,7 +65,6 @@ class userRegisteration extends State<UserRegisteration>{
                       ],
                     )
                 ),
-
                Container(
                  margin: EdgeInsets.only(left: 21),
                  width: 200,
@@ -98,10 +99,71 @@ class userRegisteration extends State<UserRegisteration>{
                        ),
                        readOnly: true,
                      ),
-
                  ),
                )
               ],
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            Padding(padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Container(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'First Name',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)
+                    )
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            Padding(padding: const EdgeInsets.only(left: 10,right: 10),
+            child: Container(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Last Name',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  )
+                ),
+              ),
+            ),
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            Padding(padding: EdgeInsets.only(left: 11,right: 11),
+            child: Container(
+              child: TextField(
+                obscureText: passwordVisible,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  suffixIcon: IconButton(icon: Icon(passwordVisible
+                      ?Icons.visibility
+                      :Icons.visibility_off),
+                      onPressed: (){
+                    setState(() {
+                      passwordVisible = !passwordVisible;
+                    });
+                  }
+                  ),
+
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  )
+                ),
+              ),
+            ),
             ),
 
             const SizedBox(
@@ -142,11 +204,9 @@ class userRegisteration extends State<UserRegisteration>{
                 ),
               ),
             ),
-
             SizedBox(
               height: 50,
             ),
-
             Center(
               child: SizedBox(
                 height: 50,
@@ -167,7 +227,6 @@ class userRegisteration extends State<UserRegisteration>{
                 ),
               ),
             )
-
           ],
         ),
       ),

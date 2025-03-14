@@ -16,6 +16,7 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
 
   final TextEditingController dateController = TextEditingController();
 
+  bool passwordVisible1 = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +40,7 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
                   width: 400,
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: 'First Name',
+                        hintText: 'UserName',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
@@ -135,27 +136,29 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             SizedBox(
               height: 10,
             ),
-            Padding(
-                padding: EdgeInsets.only(left: 10,right: 10),
-              child: TextField(
-                textInputAction: TextInputAction.newline,
-                minLines: 1,
-                maxLines: null,
-                onTap: (){
 
-                },
+            Padding(padding: EdgeInsets.only(left: 11,right: 11),
+            child: Container(
+              child: TextField(
+                obscureText: passwordVisible1,
                 decoration: InputDecoration(
-                  hintText: 'Address',
+                  hintText: 'Password',
+                  suffixIcon: IconButton(icon: Icon(passwordVisible1?
+                  Icons.visibility
+                  :Icons.visibility_off),
+                      onPressed: (){
+                        setState(() {
+                          passwordVisible1 = !passwordVisible1;
+                        });
+                      }
+                      ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Colors.lightBlueAccent
-                    )
+                    borderRadius: BorderRadius.circular(12)
                   )
                 ),
               ),
             ),
-        
+            ),
             Container(
               margin: EdgeInsets.only(top: 15,bottom: 12),
               child: Divider(
@@ -193,7 +196,71 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             SizedBox(
               height: 10,
             ),
+
+        Padding(padding: EdgeInsets.only(right: 11,left: 11),
+        child: Container(
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'First Name',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12)
+              )
+            ),
+          ),
+        ),
+        ),
+
+        SizedBox(
+          height: 10,
+        ),
+
+        Padding(padding: EdgeInsets.only(left: 11,right: 11),
+        child: Container(
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'Last Name',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12)
+              )
+            ),
+          ),
+        ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
         
+        Padding(padding: EdgeInsets.only(left: 11,right: 11),
+        child: Container(
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'Degree',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12)
+              )
+            ),
+          ),
+        ),
+        ),
+
+        SizedBox(
+          height: 10,
+        ),
+        Padding(padding: EdgeInsets.only(left: 11,right: 11),
+        child: Container(
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'Speciality',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12)
+              )
+            ),
+          ),
+        ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
             Padding(
               padding: EdgeInsets.only(left: 10,right: 10),
               child: Container(
@@ -237,7 +304,7 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             ),
 
             SizedBox(
-              height: 40,
+              height: 30,
             ),
             Center(
               child: SizedBox(
@@ -255,6 +322,9 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
                 ),
                 ),
               ),
+            ),
+            SizedBox(
+              height: 20,
             )
           ],
         ),
