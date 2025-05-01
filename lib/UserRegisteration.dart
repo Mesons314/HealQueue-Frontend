@@ -65,40 +65,41 @@ class userRegisteration extends State<UserRegisteration>{
                       ],
                     )
                 ),
-               Container(
-                 margin: EdgeInsets.only(left: 21),
-                 width: 200,
-                 child: InkWell(
-
-                     child: TextField(
-                       onTap: () async{
-                         DateTime now = DateTime.now();
-                         DateTime lastDate = DateTime(2025,12,31);
-
-                         DateTime? picked = await showDatePicker(
-                             context: context,
-                             initialDate: now.isAfter(lastDate)?lastDate: now,
-                             firstDate: DateTime(1900),
-                             lastDate: lastDate
-                         );
-                         if(picked != null){
-                           setState(() {
-                             dateController.text = "${picked.day}/${picked.month}/${picked.year}";
-                           });
-                         }
-                       },
-                       controller: dateController,
-                       decoration: InputDecoration(
-                         hintText: "DOB",
-                         border: OutlineInputBorder(
-                           borderRadius: BorderRadius.circular(12),
-                           borderSide: BorderSide(
-                             color: Colors.lightBlueAccent
+               Expanded(
+                 child: Container(
+                   margin: EdgeInsets.only(left: 21),
+                   width: 200,
+                   child: InkWell(
+                       child: TextField(
+                         onTap: () async{
+                           DateTime now = DateTime.now();
+                           DateTime lastDate = DateTime(2025,12,31);
+                 
+                           DateTime? picked = await showDatePicker(
+                               context: context,
+                               initialDate: now.isAfter(lastDate)?lastDate: now,
+                               firstDate: DateTime(1900),
+                               lastDate: lastDate
+                           );
+                           if(picked != null){
+                             setState(() {
+                               dateController.text = "${picked.day}/${picked.month}/${picked.year}";
+                             });
+                           }
+                         },
+                         controller: dateController,
+                         decoration: InputDecoration(
+                           hintText: "DOB",
+                           border: OutlineInputBorder(
+                             borderRadius: BorderRadius.circular(12),
+                             borderSide: BorderSide(
+                               color: Colors.lightBlueAccent
+                             )
                            )
-                         )
+                         ),
+                         readOnly: true,
                        ),
-                       readOnly: true,
-                     ),
+                   ),
                  ),
                )
               ],

@@ -2,6 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:healfast01/BottomNav/BottomNavigation.dart';
 import 'package:healfast01/ScreenPages/HomePage.dart';
+import 'package:healfast01/utils/text_editing_controller.dart';
+import 'package:healfast01/widgets/text_field.dart';
+import 'package:healfast01/widgets/text_field2.dart';
+import 'package:healfast01/widgets/text_field3.dart';
 
 class DoctorsRegisterationPage extends StatefulWidget{
   const DoctorsRegisterationPage({super.key});
@@ -15,6 +19,8 @@ class DoctorsRegisterationPage extends StatefulWidget{
 class doctorsRegister extends State<DoctorsRegisterationPage>{
 
   final TextEditingController dateController = TextEditingController();
+
+  final controller = textEditingController();
 
   bool passwordVisible1 = true;
   @override
@@ -38,17 +44,11 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
               padding: const EdgeInsets.only(left: 10,right: 10,bottom: 10),
               child: SizedBox(
                   width: 400,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: 'UserName',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(
-                                color: Colors.lightBlueAccent
-                            )
-                        )
-                    ),
-                  )
+                  child: CustomTextField(
+                      hintText: 'UserName',
+                      textEditingController: controller.username,
+                      textInputType: TextInputType.text
+                  ),
               ),
             ),
         
@@ -118,18 +118,11 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             ),
             Padding(padding: const EdgeInsets.only(left: 10,right: 10),
               child: Container(
-                child: TextField(
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
+                child: CustomTextField(
                     hintText: 'Phone No',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(
-                              color: Colors.lightBlueAccent
-                          )
-                      )
-                  ),
-                ),
+                    textEditingController: controller.phoneNo,
+                    textInputType: TextInputType.phone
+                )
               ),
             ),
         
@@ -179,17 +172,10 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             Padding(
                 padding: EdgeInsets.only(left: 10,right: 10),
               child: Container(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "Name of the Clinic",
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.lightBlueAccent
-                      ),
-                      borderRadius: BorderRadius.circular(12)
-                    )
-                  ),
-                ),
+                child: CustomTextField2(
+                    hintText:"Name of the Clinic",
+                    textEditingController: controller.clinicName,
+                )
               ),
             ),
         
@@ -199,14 +185,10 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
 
         Padding(padding: EdgeInsets.only(right: 11,left: 11),
         child: Container(
-          child: TextField(
-            decoration: InputDecoration(
+          child: CustomTextField2(
               hintText: 'First Name',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12)
-              )
-            ),
-          ),
+              textEditingController: controller.firstName
+          )
         ),
         ),
 
@@ -216,14 +198,10 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
 
         Padding(padding: EdgeInsets.only(left: 11,right: 11),
         child: Container(
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Last Name',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12)
-              )
-            ),
-          ),
+          child: CustomTextField2(
+            hintText: 'Last Name',
+            textEditingController: controller.lastName
+        )
         ),
         ),
         SizedBox(
@@ -232,14 +210,10 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
         
         Padding(padding: EdgeInsets.only(left: 11,right: 11),
         child: Container(
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Degree',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12)
-              )
-            ),
-          ),
+            child: CustomTextField2(
+                hintText: 'Degree',
+                textEditingController: controller.degree
+            )
         ),
         ),
 
@@ -248,14 +222,10 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
         ),
         Padding(padding: EdgeInsets.only(left: 11,right: 11),
         child: Container(
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Speciality',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12)
-              )
-            ),
-          ),
+            child: CustomTextField2(
+                hintText: 'Speciality',
+                textEditingController: controller.speciality
+            )
         ),
         ),
         SizedBox(
@@ -264,20 +234,12 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             Padding(
               padding: EdgeInsets.only(left: 10,right: 10),
               child: Container(
-                child: TextField(
-                  minLines: 1,
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-                  decoration: InputDecoration(
+                child: CustomTextField3(
                     hintText: "Address of the Clinic",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(
-                        color: Colors.lightBlueAccent
-                      )
-                    )
-                  ),
-                ),
+                    textEditingController: controller.address,
+                    textInputType: TextInputType.multiline,
+                  MaxLines: 10,
+                )
               ),
             ),
 
@@ -288,21 +250,13 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
             Padding(
               padding: EdgeInsets.only(left: 10,right: 10),
               child: Container(
-                child: TextField(
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                    hintText: 'Phone No',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.lightBlueAccent
-                      ),
-                      borderRadius: BorderRadius.circular(12)
-                    )
-                  ),
-                ),
+                child: CustomTextField(
+                    hintText: 'Clinic Phone No',
+                    textEditingController: controller.ClinicPhoneNo,
+                    textInputType: TextInputType.phone
+                )
               ),
             ),
-
             SizedBox(
               height: 30,
             ),

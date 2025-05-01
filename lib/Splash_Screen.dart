@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:healfast01/main.dart';
 
 class SplashScreen extends StatefulWidget{
+  const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() {
    return splashScreen();
@@ -10,11 +12,11 @@ class SplashScreen extends StatefulWidget{
 
 class splashScreen extends State<SplashScreen>{
   
+  @override
   void initState(){
     super.initState();
-
-    Future.delayed(Duration(seconds:4),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MyHomePage(title: 'Heal Fast')
+    Future.delayed(const Duration(seconds:4),(){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const MyHomePage(title: 'Heal Fast')
       ));
     });
   }

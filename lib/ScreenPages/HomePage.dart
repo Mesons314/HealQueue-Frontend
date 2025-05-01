@@ -45,7 +45,7 @@ class homepage extends State<HomePage>{
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
                         },
-                        child: Text('Profile')
+                        child: const Text('Profile')
                     )
                   ],
                 ),
