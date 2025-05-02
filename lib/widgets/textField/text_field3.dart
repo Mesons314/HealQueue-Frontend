@@ -5,7 +5,7 @@ class CustomTextField3 extends StatefulWidget{
   String hintText;
   TextEditingController textEditingController;
   TextInputType textInputType;
-  final int MaxLines;
+  final MaxLines;
   CustomTextField3({required this.MaxLines,required this.hintText, required this.textEditingController, required this.textInputType});
 
   @override

@@ -11,4 +11,8 @@ class textEditingController {
   TextEditingController speciality = TextEditingController();
   TextEditingController ClinicPhoneNo = TextEditingController();
   TextEditingController address = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController role = TextEditingController();
+  String? gender = 'Male';
+  TextEditingController dob = TextEditingController();
 }

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:healfast01/API/UserAPI.dart';
 import 'package:healfast01/BottomNav/BottomNavigation.dart';
-import 'package:healfast01/ScreenPages/HomePage.dart';
+import 'package:healfast01/utils/text_editing_controller.dart';
+import 'package:healfast01/widgets/textField/text_field.dart';
+import 'package:healfast01/widgets/textField/text_field3.dart';
+import 'package:healfast01/widgets/textField/text_field4.dart';
+
+import '../Models/userModel.dart';
 
 class UserRegisteration extends StatefulWidget{
   @override
@@ -14,7 +20,8 @@ class userRegisteration extends State<UserRegisteration>{
 
   final TextEditingController dateController = TextEditingController();
 
-  bool passwordVisible = false;
+  final controller = textEditingController();
+  final repo = UserCall();
 
   @override
   Widget build(BuildContext context) {
@@ -38,36 +45,43 @@ class userRegisteration extends State<UserRegisteration>{
                 padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
               child: SizedBox(
                 width: 400,
-                child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'UserName',
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.lightBlueAccent
-                    ),
-                    borderRadius: BorderRadius.circular(12)
-                  )
-                ),
-                ),
+                child: CustomTextField(
+                    hintText: 'UserName',
+                    textEditingController: controller.username,
+                    textInputType: TextInputType.text
+                )
               ),
             ),
             Row(
               children: [
-                Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: DropdownMenu<String>(
-                      hintText: 'Gender',
-                      requestFocusOnTap: true,
-                      dropdownMenuEntries: <DropdownMenuEntry<String>>[
-                        DropdownMenuEntry(value: '1', label: 'Male'),
-                        DropdownMenuEntry(value: '1', label: 'Female'),
-                        DropdownMenuEntry(value: '1', label: 'Other')
-                      ],
-                    )
+                Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: DropdownMenu<String>(
+                        hintText: 'Gender',
+                        initialSelection: controller.gender,
+                        onSelected: (value){
+                          setState(() {
+                            controller.gender = value!;
+                          });
+                        },
+                        requestFocusOnTap: true,
+                        dropdownMenuEntries: const <DropdownMenuEntry<String>>[
+                          DropdownMenuEntry(value: 'Male', label: 'Male'),
+                          DropdownMenuEntry(value: 'Female', label: 'Female'),
+                          DropdownMenuEntry(value: 'Other', label: 'Other')
+                        ],
+                        inputDecorationTheme: InputDecorationTheme(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12)
+                            )
+                        ),
+                      )
+                  ),
                 ),
                Expanded(
                  child: Container(
-                   margin: EdgeInsets.only(left: 21),
+                   margin: EdgeInsets.only(left: 15,right: 10),
                    width: 200,
                    child: InkWell(
                        child: TextField(
@@ -111,14 +125,11 @@ class userRegisteration extends State<UserRegisteration>{
 
             Padding(padding: const EdgeInsets.only(left: 10, right: 10),
               child: Container(
-                child: TextField(
-                  decoration: InputDecoration(
+                child: CustomTextField(
                     hintText: 'First Name',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12)
-                    )
-                  ),
-                ),
+                    textEditingController: controller.firstName,
+                    textInputType: TextInputType.text
+                )
               ),
             ),
 
@@ -128,14 +139,11 @@ class userRegisteration extends State<UserRegisteration>{
 
             Padding(padding: const EdgeInsets.only(left: 10,right: 10),
             child: Container(
-              child: TextField(
-                decoration: InputDecoration(
+              child: CustomTextField(
                   hintText: 'Last Name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12)
-                  )
-                ),
-              ),
+                  textEditingController: controller.lastName,
+                  textInputType: TextInputType.text
+              )
             ),
             ),
 
@@ -145,25 +153,12 @@ class userRegisteration extends State<UserRegisteration>{
 
             Padding(padding: EdgeInsets.only(left: 11,right: 11),
             child: Container(
-              child: TextField(
-                obscureText: passwordVisible,
-                decoration: InputDecoration(
+              child: CustomTextField4(
+                  passwordVisible: true,
                   hintText: 'Password',
-                  suffixIcon: IconButton(icon: Icon(passwordVisible
-                      ?Icons.visibility
-                      :Icons.visibility_off),
-                      onPressed: (){
-                    setState(() {
-                      passwordVisible = !passwordVisible;
-                    });
-                  }
-                  ),
-
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12)
-                  )
-                ),
-              ),
+                  textEditingController: controller.password,
+                  textInputType: TextInputType.text
+              )
             ),
             ),
 
@@ -172,19 +167,12 @@ class userRegisteration extends State<UserRegisteration>{
             ),
             Padding(padding: const EdgeInsets.only(left: 10,right: 10),
               child: Container(
-                child: TextField(
-                  minLines: 1,
-                  maxLines: null,
-                  decoration: InputDecoration(
+                child: CustomTextField3(
+                    MaxLines: null,
                     hintText: 'Address',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(
-                              color: Colors.lightBlueAccent
-                          )
-                      )
-                  ),
-                ),
+                    textEditingController: controller.address,
+                    textInputType: TextInputType.text
+                )
               ),
             ),
             SizedBox(
@@ -192,18 +180,22 @@ class userRegisteration extends State<UserRegisteration>{
             ),
             Padding(
                 padding: EdgeInsets.only(left: 10,right: 10),
-              child: TextField(
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  hintText: "Phone No",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Colors.lightBlueAccent
-                    )
-                  )
-                ),
-              ),
+              child: CustomTextField(
+                  hintText: 'Phone No',
+                  textEditingController: controller.phoneNo,
+                  textInputType: TextInputType.phone
+              )
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+                padding: EdgeInsets.only(left: 10,right: 10),
+                child: CustomTextField(
+                    hintText: 'USER',
+                    textEditingController: controller.role,
+                    textInputType: TextInputType.text
+                )
             ),
             SizedBox(
               height: 50,
@@ -213,19 +205,38 @@ class userRegisteration extends State<UserRegisteration>{
                 height: 50,
                 width: 120,
                 child: ElevatedButton(
+
                   style: ElevatedButton.styleFrom(
                     elevation: 10,
                     alignment: Alignment.center, // Center the content
                   ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavigation()));
+                  onPressed: () async{
+                    try{
+                      UserModel user = UserModel(
+                          userName:controller.username.text,
+                          gender: controller.gender,
+                          dob: controller.dob.text,
+                          password: controller.password.text,
+                          firstName:controller.firstName.text,
+                          lastName: controller.lastName.text,
+                          address: controller.address.text,
+                          role: controller.role.text
+                      );
+                      await repo.addUser(user);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Added successfully")));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavigation()));
+                    }catch(e){
+                      print('Error: $e');
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(content: Text('Error in adding the user')));
+                    }
                   },
                   child: Text(
                     'Submit',
                     style: TextStyle(fontSize: 20),
                     textAlign: TextAlign.center, // Center text within the button
                   ),
-                ),
+                )
               ),
             )
           ],

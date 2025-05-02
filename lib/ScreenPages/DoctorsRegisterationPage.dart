@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:healfast01/BottomNav/BottomNavigation.dart';
 import 'package:healfast01/ScreenPages/HomePage.dart';
 import 'package:healfast01/utils/text_editing_controller.dart';
-import 'package:healfast01/widgets/text_field.dart';
-import 'package:healfast01/widgets/text_field2.dart';
-import 'package:healfast01/widgets/text_field3.dart';
+import 'package:healfast01/widgets/textField/text_field.dart';
+import 'package:healfast01/widgets/textField/text_field2.dart';
+import 'package:healfast01/widgets/textField/text_field3.dart';
+
 
 class DoctorsRegisterationPage extends StatefulWidget{
   const DoctorsRegisterationPage({super.key});
@@ -235,10 +236,10 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
               padding: EdgeInsets.only(left: 10,right: 10),
               child: Container(
                 child: CustomTextField3(
-                    hintText: "Address of the Clinic",
+                    MaxLines: null,
+                    hintText: 'Address',
                     textEditingController: controller.address,
-                    textInputType: TextInputType.multiline,
-                  MaxLines: 10,
+                    textInputType: TextInputType.text
                 )
               ),
             ),
@@ -258,23 +259,41 @@ class doctorsRegister extends State<DoctorsRegisterationPage>{
               ),
             ),
             SizedBox(
+              height: 10,
+            ),
+            Padding(
+                padding: EdgeInsets.only(left: 10,right: 10),
+                child: CustomTextField(
+                    hintText: 'CLINIC',
+                    textEditingController: controller.role,
+                    textInputType: TextInputType.text
+                )
+            ),
+            SizedBox(
               height: 30,
             ),
             Center(
               child: SizedBox(
-                height: 50,
-                width: 120,
-                child: ElevatedButton(
-                    onPressed: (){
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavigation()));
+                  height: 50,
+                  width: 120,
+                  child: ElevatedButton(
+
+                    style: ElevatedButton.styleFrom(
+                      elevation: 10,
+                      alignment: Alignment.center, // Center the content
+                    ),
+                    onPressed: () {
+                      try{
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavigation()));
+                      }catch(e){
+                      }
                     },
-                    child: Text('Submit',style: TextStyle(fontSize: 20,),
-                    textAlign: TextAlign.center,),
-                style: ElevatedButton.styleFrom(
-                    elevation: 12,
-                  alignment: Alignment.center
-                ),
-                ),
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center, // Center text within the button
+                    ),
+                  )
               ),
             ),
             SizedBox(

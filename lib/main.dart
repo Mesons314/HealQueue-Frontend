@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:healfast01/DoctorsRegisterationPage.dart';
-import 'package:healfast01/Login.dart';
-import 'package:healfast01/Splash_Screen.dart';
-import 'package:healfast01/UserRegisteration.dart';
-
+import 'package:healfast01/ScreenPages/DoctorsRegisterationPage.dart';
+import 'package:healfast01/ScreenPages/Login.dart';
+import 'package:healfast01/ScreenPages/Splash_Screen.dart';
+import 'package:healfast01/ScreenPages/UserRegisteration.dart';
 import 'package:healfast01/BottomNav/BottomNavigation.dart';
 
 void main() {
